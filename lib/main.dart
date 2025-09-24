@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           selectionColor: AppColors.secondary,
           selectionHandleColor: AppColors.secondary,
         ),
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
         useMaterial3: true,
       ),
     );

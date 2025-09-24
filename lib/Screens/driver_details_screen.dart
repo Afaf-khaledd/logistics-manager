@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:logistics_manager/Models/drivers_model.dart';
 import 'package:logistics_manager/utils/app_color.dart';
-import '../Models/vehicles_model.dart';
+
 import '../Widgets/custom_app_bar.dart';
 import '../Widgets/details_item.dart';
 import '../helper/get_statues_color.dart';
 
-class VehicleDetailsScreen extends StatelessWidget {
-  final VehicleModel vehicle;
-  const VehicleDetailsScreen({super.key, required this.vehicle});
+class DriverDetailsScreen extends StatelessWidget {
+  final DriversModel driver;
+  const DriverDetailsScreen({super.key, required this.driver});
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +18,7 @@ class VehicleDetailsScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Card(
           color: Colors.white,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           elevation: 4,
           child: Padding(
             padding: const EdgeInsets.all(20),
@@ -28,10 +28,10 @@ class VehicleDetailsScreen extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Icon(Icons.directions_car, color: AppColors.primary, size: 28),
+                    Icon(Icons.person, color: AppColors.primary, size: 28),
                     const SizedBox(width: 10),
                     Text(
-                      "Vehicle ID: ${vehicle.id}",
+                      driver.name,
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -40,22 +40,22 @@ class VehicleDetailsScreen extends StatelessWidget {
                   ],
                 ),
                 const Divider(height: 30),
-                DetailRow(title: "Type", value: vehicle.typeText),
+                DetailRow(title: "License Number", value: driver.licenseNumber),
                 const SizedBox(height: 12),
                 DetailRow(
                   title: "Status",
-                  value: vehicle.statusText,
-                  valueColor: getStatusColor(vehicle.status),
+                  value: driver.status == DriverStatus.available ? "Available" : "On Trip",
+                  valueColor: getStatusColor(driver.status),
                 ),
                 const SizedBox(height: 12),
                 DetailRow(
-                  title: "Assigned Driver",
-                  value: vehicle.assignedDriver ?? "None",
+                  title: "Assigned Vehicle",
+                  value: driver.assignedVehicleId ?? "None",
                 ),
                 const SizedBox(height: 12),
                 DetailRow(
-                  title: "Current Trip",
-                  value: vehicle.currentTrip ?? "None",
+                  title: "Ongoing/Last Trip",
+                  value: driver.lastTrip ?? "None",
                 ),
               ],
             ),

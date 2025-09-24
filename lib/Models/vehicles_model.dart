@@ -5,9 +5,9 @@ class VehicleModel {
   final String id;
   final String name;
   final VehicleType type;
-  VehicleStatus status;
-  String? assignedDriver; // Driver ID or Name
-  String? currentTrip;    // Trip ID
+  final VehicleStatus status;
+  final String? assignedDriver;
+  final String? currentTrip;
 
   VehicleModel({
     required this.id,

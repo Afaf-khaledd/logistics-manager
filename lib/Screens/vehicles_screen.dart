@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:logistics_manager/Models/vehicles_model.dart';
-import 'package:logistics_manager/utils/app_color.dart';
 
 import '../Widgets/custom_app_bar.dart';
+import '../Widgets/status_card_item.dart';
 import '../helper/bottom_nav_handler.dart';
 import '../helper/get_statues_color.dart';
 
@@ -43,53 +43,13 @@ class VehiclesScreen extends StatelessWidget {
         itemCount: mockVehicles.length,
         itemBuilder: (context, index) {
           final vehicle = mockVehicles[index];
-          return Container(
-            margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black12,
-                  blurRadius: 4,
-                  offset: const Offset(0, 2),
-                ),
-              ],
-            ),
-            child: ListTile(
-              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              leading: Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: AppColors.primary,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: const Icon(Icons.local_shipping, color: Colors.white),
-              ),
-              title: Text(
-                "Vehicle ID: ${vehicle.id}",
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16,
-                ),
-              ),
-              subtitle: Text(
-                vehicle.typeText,
-                style: const TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey,
-                ),
-              ),
-              trailing: Text(
-                vehicle.statusText,
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: getStatusColor(vehicle.status),
-                ),
-              ),
-              onTap: () {context.push('/vehicle_details', extra: vehicle);},
-            ),
+          return StatusCardItem(
+            icon: Icons.local_shipping,
+            title: "Vehicle ID: ${vehicle.id}",
+            subtitle: vehicle.typeText,
+            trailingText: vehicle.statusText,
+            trailingColor: getStatusColor(vehicle.status),
+            onTap: () => context.push('/vehicle_details', extra: vehicle),
           );
         },
       ),
