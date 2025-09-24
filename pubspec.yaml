@@ -18,6 +18,8 @@ dependencies:
   google_fonts:
   device_preview:
   awesome_bottom_bar:
+  flutter_bloc:
+  equatable:
 
 dev_dependencies:
   flutter_test:

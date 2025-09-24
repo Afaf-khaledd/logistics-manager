@@ -7,7 +7,7 @@ import '../Widgets/details_item.dart';
 import '../helper/get_statues_color.dart';
 
 class DriverDetailsScreen extends StatelessWidget {
-  final DriversModel driver;
+  final DriverModel driver;
   const DriverDetailsScreen({super.key, required this.driver});
 
   @override

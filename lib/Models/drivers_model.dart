@@ -1,22 +1,22 @@
 enum DriverStatus { available, onTrip }
 
-class DriversModel {
+class DriverModel {
   final String id;
   final String name;
   final String licenseNumber;
-  final DriverStatus status;
-  final String? assignedVehicleId;
-  final String? lastTrip;
+  DriverStatus status;
+  String? assignedVehicleId;
+  String? lastTrip;
 
-  DriversModel({
+  DriverModel({
     required this.id,
     required this.name,
     required this.licenseNumber,
-    required this.status,
+    this.status = DriverStatus.available,
     this.assignedVehicleId,
     this.lastTrip,
   });
 
-  String get statusText => status.name[0].toUpperCase() + status.name.substring(1);
+  String get statusText =>
+      status == DriverStatus.available ? "Available" : "On Trip";
 }
-

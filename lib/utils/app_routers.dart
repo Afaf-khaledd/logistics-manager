@@ -2,9 +2,13 @@ import 'package:go_router/go_router.dart';
 import 'package:logistics_manager/Models/drivers_model.dart';
 import 'package:logistics_manager/Screens/drivers_screen.dart';
 import 'package:logistics_manager/Screens/splash_screen.dart';
+import 'package:logistics_manager/Screens/trips_details_screen.dart';
 
+import '../Models/trips_model.dart';
 import '../Models/vehicles_model.dart';
+import '../Screens/assign_trip_screen.dart';
 import '../Screens/driver_details_screen.dart';
+import '../Screens/trips_screen.dart';
 import '../Screens/vehicle_details_screen.dart';
 import '../Screens/vehicles_screen.dart';
 
@@ -29,11 +33,19 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: '/driver_details',
-        builder: (context, state) => DriverDetailsScreen(driver: state.extra as DriversModel,),
+        builder: (context, state) => DriverDetailsScreen(driver: state.extra as DriverModel,),
       ),
       GoRoute(
         path: '/trips',
-        builder: (context, state) =>  VehiclesScreen(),
+        builder: (context, state) =>  TripsScreen(),
+      ),
+      GoRoute(
+        path: '/trip_details',
+        builder: (context, state) => TripDetailsScreen(trip: state.extra as TripModel,),
+      ),
+      GoRoute(
+        path: '/assign_trip',
+        builder: (context, state) => AssignTripScreen(),
       ),
     ],
   );

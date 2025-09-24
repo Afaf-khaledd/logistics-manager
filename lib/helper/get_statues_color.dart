@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Models/drivers_model.dart';
+import '../Models/trips_model.dart';
 import '../Models/vehicles_model.dart';
 
 Color getStatusColor(dynamic status) {
@@ -16,6 +17,16 @@ Color getStatusColor(dynamic status) {
         return Colors.green;
       case DriverStatus.onTrip:
         return Colors.orange;
+    }
+  }
+  else if (status is TripStatus) {
+    switch (status) {
+      case TripStatus.completed:
+        return Colors.green;
+      case TripStatus.inProgress:
+        return Colors.orange;
+      case TripStatus.pending:
+        return Colors.red;
     }
   }
   return Colors.grey;
